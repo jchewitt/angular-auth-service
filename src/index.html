@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Catalina</title>
+    <base href="/">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/images/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/images/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/images/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="assets/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/images/favicon-16x16.png" sizes="16x16" />
+
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+</head>
+<body>
+    <app-root>
+        <style>
+            div.overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 5000;
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+            div.spinner {
+                width: 64px;
+                height: 64px;
+                left: calc(50% - 32px);
+                top: calc(50% - 32px);
+                position: fixed;
+                background-image: url('/assets/images/spinner.svg');
+                background-position: center center;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        </style>
+        <div class="overlay">
+            <div class="spinner"></div>
+        </div>
+    </app-root>
+</body>
+</html>
