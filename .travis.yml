@@ -25,8 +25,7 @@ deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
   app: jh-ng-auth
-  run:
-    restart
+  local_dir: dist
   on:
     branch:
       dev
