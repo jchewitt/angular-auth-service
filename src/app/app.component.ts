@@ -11,7 +11,6 @@ import { AppLoaderService } from './core/services/app-loader.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    public title = 'catalina';
 
     constructor(public loading: AppLoaderService, private userService: UserService, private authService: AuthService) {/**/
     }

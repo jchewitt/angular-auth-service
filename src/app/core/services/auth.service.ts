@@ -102,7 +102,7 @@ export class AuthService {
    * @returns {AuthUser | null}
    */
   private getUser(): AuthUser | null {
-    const user = this.storage.get('catalina');
+    const user = this.storage.get('jhngauth');
     if (user) {
       return user;
     }
@@ -117,7 +117,7 @@ export class AuthService {
     // TODO: add logic to set an expires datetime for the user
     user.expired = false;
     this.user = user;
-    this.storage.set('catalina', user);
+    this.storage.set('jhngauth', user);
   }
 
   /**

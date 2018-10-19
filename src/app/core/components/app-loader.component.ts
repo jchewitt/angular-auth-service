@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppLoaderService } from "../services/app-loader.service";
 
 @Component({
-  selector: 'cat-loader',
+  selector: 'app-loader',
   template: `
     <div class="overlay" *ngIf="spinnerService.displaySpinner">
       <div class="spinner"></div>
