@@ -20,7 +20,7 @@ cache:
     - "$HOME/.npm"
 script:
 - ng build --prod --aot
-- ng test
+#- ng test
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
