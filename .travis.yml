@@ -1,0 +1,32 @@
+sudo: required
+addons:
+  chrome: stable
+
+language: node_js
+node_js:
+- 10.9
+
+branches:
+  only:
+  - dev
+
+before_script:
+- npm install -g @angular/cli
+
+install:
+  - "npm ci"
+cache:
+  directories:
+    - "$HOME/.npm"
+script:
+- ng build --prod --aot
+- ng test
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: angular-exploratory-api
+  run:
+    restart
+  on:
+    branch:
+      dev
