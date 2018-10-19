@@ -7,6 +7,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AccountModule } from "./account/account.module";
 import { AppCommonModule } from "./common/app-common.module";
 import { ProtectedModule } from "./protected/protected.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ProtectedModule } from "./protected/protected.module";
     AppCommonModule,
     AppRoutingModule,
     AccountModule,
-    ProtectedModule
+    ProtectedModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent

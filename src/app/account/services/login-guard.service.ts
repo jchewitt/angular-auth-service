@@ -49,7 +49,7 @@ export class LoginGuardService implements CanActivate, CanActivateChild, CanLoad
   public checkLogin(url: string): Observable<boolean> {
     return this.authService.loggedIn.pipe(tap((isLoggedIn: boolean) => {
       if (isLoggedIn) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/protected']);
       }
     }), map((res) => {
       if (res === false) {

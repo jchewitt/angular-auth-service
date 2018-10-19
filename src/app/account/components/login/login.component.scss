@@ -7,3 +7,9 @@
 .full-width {
   width: 100%;
 }
+
+mat-card {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}

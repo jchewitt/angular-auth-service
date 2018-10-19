@@ -3,11 +3,11 @@ const express = require('express');
 const app = express();
 
 // Serve static files
-app.use(express.static(__dirname + '/dist/angular-auth-service'));
+app.use(express.static('/dist/angular-auth-service'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/angular-auth-service/index.html'));
+  res.sendFile(path.join('/dist/angular-auth-service/index.html'));
 });
 
 let env = process.env.NODE_ENV || 'development';
