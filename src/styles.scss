@@ -9,14 +9,16 @@ html, body {
 body {
     font-family: Arial, Helvetica, SansSerif;
     font-weight: 400;
-    color: #333;
+    color: $black-3;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
+  color: $black-3;
 }
 
 .quote {
   font-size: $size-sm;
   font-style: italic;
+  color: $black-3;
 }

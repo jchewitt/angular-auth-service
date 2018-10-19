@@ -5,6 +5,7 @@ import { AuthUser } from "../models/auth-user.model";
 import { ConfigService } from "./config.service";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, map } from "rxjs/internal/operators";
+import { ParsedToken } from "../models/parsed-token.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
   public isLoggedIn: boolean = false;
   public user: AuthUser;
 
-  constructor(private storage: StorageService, private config: ConfigService, private http: HttpClient) {/**/}
+  constructor(private storage: StorageService, private config: ConfigService, private http: HttpClient) {/**/
+  }
 
   /**
    * Initializes the service
@@ -25,8 +27,8 @@ export class AuthService {
     if (this.user !== null) {
       this.checkUser(user).subscribe(res => {
         if (res) {
-            this.setUser(user);
-            this.setLoggedIn(true);
+          this.setUser(user);
+          this.setLoggedIn(true);
         } else {
           this.setLoggedIn(false);
         }
@@ -44,7 +46,7 @@ export class AuthService {
    * @returns {Observable<boolean>}
    */
   public login(email: string, password: string): Observable<boolean> {
-    return this.http.post(this.config.authConfig.authority, {email, password}).pipe(
+    return this.http.post(this.config.authConfig.signin_url, {email, password}).pipe(
       catchError((error: HttpErrorResponse) => {
         this.setLoggedIn(false);
         return of(false);
@@ -60,6 +62,14 @@ export class AuthService {
     );
   }
 
+  public logout(): Observable<boolean> {
+    return this.http.get(this.config.authConfig.signout_url).pipe(map(res => {
+      this.setLoggedIn(false);
+      this.setUser(null);
+      return true
+    }));
+  }
+
   /**
    * Returns the string for the authorization header
    * @param {AuthUser} user
@@ -67,9 +77,9 @@ export class AuthService {
    */
   public getAuthHeaderString(user?: AuthUser): string {
     if (user) {
-      return `${user.token_type} ${user.access_token}`;
+      return `${user.token}`;
     } else if (this.user) {
-      return `${this.user.token_type} ${this.user.access_token}`
+      return `${this.user.token}`
     }
     return '';
   }
@@ -80,8 +90,8 @@ export class AuthService {
    * @returns {Observable<boolean>}
    */
   private checkUser(user: AuthUser): Observable<boolean> {
-    const headers = {Authorization: this.getAuthHeaderString(user)};
-    return this.http.get(this.config.authConfig.authCheck, {headers}).pipe(
+    const headers = {'x-access-token': this.getAuthHeaderString(user)};
+    return this.http.get(this.config.authConfig.auth_check, {headers}).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 200) {
           return of(true);
@@ -115,6 +125,10 @@ export class AuthService {
    */
   private setUser(user: AuthUser): void {
     // TODO: add logic to set an expires datetime for the user
+    if (!user) {
+      this.user = null;
+      this.storage.set('jhngauth', null);
+    }
     user.expired = false;
     this.user = user;
     this.storage.set('jhngauth', user);
@@ -127,5 +141,12 @@ export class AuthService {
   private setLoggedIn(value: boolean): void {
     this.loggedIn.next(value);
     this.isLoggedIn = value;
+  }
+
+  private parseJwt(token: string): ParsedToken {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    const parsed = JSON.parse(window.atob(base64));
+    return parsed;
   }
 }

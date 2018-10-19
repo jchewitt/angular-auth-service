@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         if (retUrl) {
           window.location.href = retUrl;
         } else {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/protected']);
         }
       }
     });

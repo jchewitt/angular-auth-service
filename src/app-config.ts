@@ -6,12 +6,19 @@ export const CONFIG = <IHttpConfig> {
       'api://': {
           root: environment.root_api_url,
           isAuth: true,
-          headers: {}
+          headers: {},
+      },
+      'userapi://': {
+        root: environment.user_api_url,
+        isAuth: true,
+        headers: {}
       }
   },
   authConfig: {
     authority: environment.authority,
-    authCheck: environment.authority_check_url
+    signin_url: environment.authority + '/login',
+    signout_url: environment.authority + '/logout',
+    auth_check: environment.authority + '/check'
   },
   propertiesFile: null
 };

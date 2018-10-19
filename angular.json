@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "catalina": {
+    "angular-auth-service": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/catalina",
+            "outputPath": "dist/angular-auth-service",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "catalina:build"
+            "browserTarget": "angular-auth-service:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "catalina:build:production"
+              "browserTarget": "angular-auth-service:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "catalina:build"
+            "browserTarget": "angular-auth-service:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "catalina-e2e": {
+    "angular-auth-service-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "catalina:serve"
+            "devServerTarget": "angular-auth-service:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "catalina:serve:production"
+              "devServerTarget": "angular-auth-service:serve:production"
             }
           }
         },
@@ -123,7 +123,7 @@
       }
     }
   },
-  "defaultProject": "catalina",
+  "defaultProject": "angular-auth-service",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"

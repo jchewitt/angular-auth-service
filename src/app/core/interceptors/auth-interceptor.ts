@@ -44,7 +44,7 @@ export class AuthInterceptor implements HttpInterceptor {
    * Adds the authorization header
    */
   private setAuthorizationHeader(headers: any): any {
-    headers['Authorization'] = this.auth.getAuthHeaderString();
+    headers['x-access-token'] = this.auth.getAuthHeaderString();
   }
 
   /**
