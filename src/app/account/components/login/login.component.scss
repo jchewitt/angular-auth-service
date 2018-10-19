@@ -10,6 +10,7 @@
 
 :host {
  display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -26,4 +27,13 @@ mat-card-actions {
 mat-card-footer {
   text-align: right;
   padding: 5px;
+}
+
+.logo_wrapper {
+  text-align: center;
+  width: 100%;
+  margin: 0 0 25px 0;
+  img {
+    width: 250px;
+  }
 }

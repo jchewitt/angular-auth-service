@@ -1,3 +1,6 @@
+<div class="logo_wrapper">
+  <img src="/assets/images/logo.png" class="logo"/>
+</div>
 <mat-card>
   <mat-card-header>
     <h2>Sign-In</h2>
@@ -6,7 +9,7 @@
     <mat-card-content>
       <mat-form-field class="full-width">
         <input matInput placeholder="Email" [formControl]="emailControl"
-               [errorStateMatcher]="matcher" />
+               [errorStateMatcher]="matcher"/>
         <mat-hint>user@example.com</mat-hint>
         <mat-error *ngIf="emailControl.hasError('email') && !emailControl.hasError('required')">
           Please enter a valid email address
@@ -16,7 +19,7 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Password" type="password" [formControl]="passwordControl" />
+        <input matInput placeholder="Password" type="password" [formControl]="passwordControl"/>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
