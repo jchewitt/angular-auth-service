@@ -1,0 +1,53 @@
+<div class="logo_wrapper">
+  <img src="/assets/images/logo.png" class="logo"/>
+</div>
+<mat-card>
+  <mat-card-header>
+    <h2>Register</h2>
+  </mat-card-header>
+  <form class="form" (submit)="doRegister()" [formGroup]="registerForm" *ngIf="!registrationComplete">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Full Name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" formControlName="email"
+               [errorStateMatcher]="matcher"/>
+        <mat-hint>user@example.com</mat-hint>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('email') && !registerForm.controls['email'].hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <div formGroupName="passwordGroup">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-error>
+            {{errors.password}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Confirm password" type="password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher">
+          <mat-error>
+            {{errors.confirmPassword}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">REGISTER</button>
+      <button mat-raised-button routerLink="../login">SIGN-IN</button>
+    </mat-card-actions>
+  </form>
+  <mat-card-content *ngIf="registrationComplete">
+    {{registerForm.value['name']}}, you've successfully registered with the email address: {{registerForm.value['email']}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button routerLink="../login">SIGN-IN</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <span class="quote">Example of Angular authentication module.</span>
+  </mat-card-footer>
+</mat-card>

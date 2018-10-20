@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  authority: 'http://localhost:3000/auth',
-  root_api_url: 'http://localhost:3000/api',
-  user_api_url: `http://localhost:3000/users`
+  authority: 'http://localhost:3000/auth/',
+  root_api_url: 'http://localhost:3000/api/',
+  user_api_url: `http://localhost:3000/users/`
 };
 
 /*

@@ -7,6 +7,7 @@ import { AppCommonModule } from "../common/app-common.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginGuardService } from "./services/login-guard.service";
 import { MatButtonModule, MatCardModule, MatInputModule } from "@angular/material";
+import { RegisterComponent } from "./components/register/register.component";
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MatButtonModule, MatCardModule, MatInputModule } from "@angular/materia
   ],
   declarations: [
     AccountComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
     LoginGuardService

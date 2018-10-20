@@ -1,0 +1,39 @@
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+:host {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+mat-card {
+  width: 300px;
+}
+
+mat-card-actions {
+  text-align: right;
+}
+
+mat-card-footer {
+  text-align: right;
+  padding: 5px;
+}
+
+.logo_wrapper {
+  text-align: center;
+  width: 100%;
+  margin: 0 0 25px 0;
+  img {
+    width: 200px;
+  }
+}

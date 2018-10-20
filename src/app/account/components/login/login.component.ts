@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../../core/services/auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { StorageService } from "../../../core/services/storage.service";
-import { FormControl, Validators } from "@angular/forms";
-import { MyErrorStateMatcher } from "../../../common/form-utilities/error-state-matcher";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MyErrorStateMatcher } from "../../../common/form-utilities/form-utilities";
 
 @Component({
   selector: 'app-login',
@@ -11,13 +11,13 @@ import { MyErrorStateMatcher } from "../../../common/form-utilities/error-state-
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public emailControl: FormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-  public passwordControl: FormControl = new FormControl('', [
-    Validators.required
-  ]);
+  public loginForm = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    password: new FormControl('', [Validators.required])
+  });
 
   public matcher: MyErrorStateMatcher = new MyErrorStateMatcher();
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
    * Attempt logging in
    */
   public doLogin(): void {
-    this.authService.login(this.emailControl.value, this.passwordControl.value).subscribe(res => {
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(res => {
       if (res) {
         const retUrl = this.storage.get('return_url');
         if (retUrl) {

@@ -11,7 +11,7 @@ import { propertiesResolverFactory } from "./properties-resolver.factory";
 import { StorageService } from "./services/storage.service";
 import { AppLoaderComponent } from "./components/app-loader.component";
 import { AuthGuardService } from "./services/auth-guard.service";
-import { UserService } from './services/user.service';
+import { UserService } from '../common/services/user.service';
 
 @NgModule({
   imports: [
