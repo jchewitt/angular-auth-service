@@ -6,9 +6,11 @@ There's a [hosted example](http://jh-ng-auth.herokuapp.com/) where you can regis
 
 ### Table of Contents
 - [Getting Started](#getting-started)
-- [Points of Notice](#points-of-notice)
+- [Expanding Authentication](#expanding-authentication)
+- [Definitions](#definitions)
   - [App Config](#app-config)
   - [Interceptors](#interceptors)
+- [CI](#ci)
 
 ## Getting Started
 Clone this project along with the node service located [here](https://github.com/jchewitt/exploratory-api).  
@@ -21,7 +23,10 @@ Install node_modules
 Serve the project
 
 	npm start
-## Points of Notice
+	
+## Expanding Authentication
+Currently this uses JSON Web Tokens for simplicity. However it was originally designed for oAuth implementation. It can easily be altered to work with an oAuth flow and is currently a foundation for enterprise SPA authentication.You'll notice in the auth config model that it is setup for token type along with access token. With some basic changes in the auth service the method for getting the authorization header can be changed to use these.
+## Definitions
 ### App Config
 
 _config.service_
@@ -139,3 +144,5 @@ Authorization headers are added here as well if it's flagged _isAuth_ in the int
 	
 	if (this.httpConfig.interceptUrls[key].isAuth) this.setAuthorizationHeader(headers);
 
+## CI
+On successful merge into the **dev** branch a deployment is triggered on [Travis CI](https://travisci.org) and the app is deployed to [Heroku](https://www.heroku.com) where it is hosted.
