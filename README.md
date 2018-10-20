@@ -109,7 +109,7 @@ export function propertiesResolverFactory(appConfig: ConfigService, authService:
 } 
 ```
 ### Interceptors
-Through the interceptors authorization headers or any custom headers defiuned in the config service are added.
+Through the interceptors authorization headers or any custom headers defined in the config service are added.
 
 **Interceptor Urls**
 The `InterceptorUrl`s provided in the config service are used by the auth interceptor to replace url keys with actual urls and define custom headers.
@@ -123,6 +123,7 @@ export class InterceptorUrls {
 }
 ```
 Root is replaced with the auth interceptor.
+
 **Auth Interceptor**
 ```
 /**
