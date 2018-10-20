@@ -3,7 +3,7 @@ import { UserService } from "../../../common/services/user.service";
 import {
   ConfirmValidParentMatcher,
   CustomValidators,
-  errorMessages, regExps
+  errorMessages, MyErrorStateMatcher, regExps
 } from "../../../common/form-utilities/form-utilities";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { RegisterModel } from "../../../common/models/register.model";
@@ -15,6 +15,7 @@ import { RegisterModel } from "../../../common/models/register.model";
 })
 export class RegisterComponent {
   public confirmValidParentMatcher = new ConfirmValidParentMatcher();
+  public matcher = new MyErrorStateMatcher();
   public errors = errorMessages;
   public registrationComplete: boolean = false;
   public registerForm: FormGroup = new FormGroup({
@@ -37,6 +38,9 @@ export class RegisterComponent {
    * Call the auth api to register the user
    */
   public doRegister(): void {
+    if (!this.registerForm.valid) {
+      return;
+    }
     const user = new RegisterModel();
     user.name = this.registerForm.value['name'];
     user.email = this.registerForm.value['email'];

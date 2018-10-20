@@ -44,7 +44,7 @@
   <mat-card-content *ngIf="registrationComplete">
     {{registerForm.value['name']}}, you've successfully registered with the email address: {{registerForm.value['email']}}
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="registrationComplete">
     <button mat-raised-button routerLink="../login">SIGN-IN</button>
   </mat-card-actions>
   <mat-card-footer>
