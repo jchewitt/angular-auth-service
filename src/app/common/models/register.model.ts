@@ -1,6 +1,5 @@
-import { UserModel } from "./user.model";
 
-export class RegisterModell {
+export class RegisterModel {
   public name: string = '';
   public email: string = '';
   public password: string = '';

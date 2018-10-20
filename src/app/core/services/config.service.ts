@@ -14,7 +14,7 @@ export class ConfigService implements IHttpConfig {
   public authConfig: AuthConfig;
   public propertiesFile: string = null;
   public meta: any = {};
-  public appId: string = 'catalina';
+  public appId: string = '';
 
   constructor(private http?: HttpClient) {
   }
